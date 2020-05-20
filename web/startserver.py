@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 import jsonpickle
 from crawler_api_integration.services import PredictionIntegrationService
 from crawler.crawlers import PariMatchCrawler
@@ -22,4 +23,5 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run(port=5002)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(port=port)
