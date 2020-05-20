@@ -1,4 +1,5 @@
 selenium
 webdriver_manager
 requests
+flask
 jsonpickle
