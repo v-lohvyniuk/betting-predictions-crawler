@@ -11,10 +11,9 @@ class DriverFactory:
         opts = Options()
         opts.headless=True
         opts.add_argument('--no-sandbox')
-        # opts.add_argument('--disable-dev-shm-usage')
+        opts.add_argument('--disable-dev-shm-usage')
         driver = Chrome(options=opts)
         driver.implicitly_wait(30)
-        driver.maximize_window()
         return driver
 
 
