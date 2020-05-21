@@ -1,7 +1,8 @@
 from crawler.driver import DriverManager
 from crawler.models import MatchRowDTO
-# from lxml import html
-import requests
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class PariMatchCrawler:
@@ -32,7 +33,7 @@ class PariMatchCrawler:
             team_2_win_coeff = coeffs_els[2].text
 
             dto_list.append(MatchRowDTO(team_1, team_2, time, team_1_win_coeff, noone_coeff, team_2_win_coeff))
-
+        logging.info("Selenium PariMatchCrawler finished execution")
         DriverManager.finalize_driver()
         return dto_list
 
