@@ -1,6 +1,6 @@
-from crawler.crawlers import PariMatchCrawler
+from crawler.crawlers import PariMatchCrawler, PariMatchScrapperCrawler
 
-crawler = PariMatchCrawler()
+crawler = PariMatchScrapperCrawler()
 
 for event in crawler.get_top_football_events():
     print(event)
