@@ -14,7 +14,7 @@ def getPredictions():
     predictions = service.get_matches_predictions()
     response = []
     for prediction in predictions:
-        response.append(prediction.__str__())
+        response.append("<p>" + prediction.__str__()  + "</p>")
     return jsonpickle.encode(response)
 
 
