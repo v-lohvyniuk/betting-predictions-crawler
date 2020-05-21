@@ -36,7 +36,7 @@ class FootballApiClient:
     def __parse_fixtures_list(self, response):
         result = []
         
-        logging.debug("GET fixtures status: " + response.status_code)
+        logging.debug("GET fixtures status: " + str(response.status_code))
         logging.debug("GET fixtures body  : " + response.json())
         fixtures_datas = response.json().get("api").get("fixtures")
         for data in fixtures_datas:
