@@ -1,3 +1,4 @@
+from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -9,9 +10,10 @@ class DriverFactory:
     def create_new_driver():
         ChromeDriverManager().install()
         opts = Options()
-        opts.headless=True
+        # opts.headless=True
         opts.add_argument('--no-sandbox')
         opts.add_argument('--disable-dev-shm-usage')
+        # dr
         driver = Chrome(options=opts)
         driver.implicitly_wait(30)
         driver.set_window_size(1120, 550)
@@ -27,8 +29,8 @@ class DriverManager:
         if DriverManager.driver:
             return DriverManager.driver
         else:
-            driver = DriverFactory.create_new_driver()
-            return driver
+            DriverManager.driver = DriverFactory.create_new_driver()
+            return DriverManager.driver
 
     @staticmethod
     def finalize_driver():
