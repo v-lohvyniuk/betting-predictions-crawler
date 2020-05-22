@@ -30,4 +30,4 @@ f"""{self.home_team_name} - {self.away_team_name} [{self.home_team_winning_perce
 
     @staticmethod
     def default_for_no_prediction(team1, team2):
-        return "No predictions for teams " + team1 + " " + team2
+        return team1 + " " + team2 + " - No predictions"
