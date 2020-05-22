@@ -10,7 +10,7 @@ class DriverFactory:
     def create_new_driver():
         ChromeDriverManager().install()
         opts = Options()
-        # opts.headless=True
+        opts.headless=True
         opts.add_argument('--no-sandbox')
         opts.add_argument('--disable-dev-shm-usage')
         # dr
