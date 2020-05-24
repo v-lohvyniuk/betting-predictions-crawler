@@ -3,3 +3,5 @@ webdriver_manager
 requests
 flask
 jsonpickle
+psycopg2
+fake-useragent

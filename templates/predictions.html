@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predictions list</title>
+</head>
+<body>
+
+<style type="text/css">
+table {width: 100%}
+body {background-color: black}
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-139y{background-color:#000000;border-color:#343434;color:#ffffff;text-align:left;vertical-align:top}
+.tg .tg-80an{background-color:#000000;border-color:#343434;color:#ffffff;font-family:Arial, Helvetica, sans-serif !important;;
+  text-align:left;vertical-align:top}
+.tg .tg-vws5{background-color:#000000;border-color:#343434;color:#009901;text-align:left;vertical-align:top}
+
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 555px">
+    <colgroup>
+        <col style="width: 25%">
+        <col style="width: 20%">
+        <col style="width: 10%">
+        <col style="width: 10%">
+        <col style="width: 10%">
+        <col style="width: 25%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="tg-139y">Advice</th>
+        <th class="tg-80an">Team1</th>
+        <th class="tg-139y">Win1</th>
+        <th class="tg-139y">Draw</th>
+        <th class="tg-139y">Win2</th>
+        <th class="tg-80an">Team2</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for prediction in predictions %}
+
+    {%if prediction.has_single_winner() %}
+    <tr>
+        <td class="tg-vws5"> {{prediction.advice}}</td>
+        <td class="tg-vws5"> {{prediction.home_team_name}}</td>
+        <td class="tg-vws5"> {{prediction.home_team_winning_percent}}</td>
+        <td class="tg-vws5"> {{prediction.draws_team_winning_percent}}</td>
+        <td class="tg-vws5"> {{prediction.away_team_winning_percent}}</td>
+        <td class="tg-vws5"> {{prediction.away_team_name}}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td class="tg-139y"> {{prediction.advice}}</td>
+        <td class="tg-139y"> {{prediction.home_team_name}}</td>
+        <td class="tg-139y"> {{prediction.home_team_winning_percent}}</td>
+        <td class="tg-139y"> {{prediction.draws_team_winning_percent}}</td>
+        <td class="tg-139y"> {{prediction.away_team_winning_percent}}</td>
+        <td class="tg-139y"> {{prediction.away_team_name}}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

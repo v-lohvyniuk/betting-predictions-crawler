@@ -14,20 +14,24 @@ class Prediction:
 
     def __init__(self, prediction_dict):
         self.__prediction_dict = prediction_dict
-        self.advice = prediction_dict.get("api").get("predictions")[0].get("advice")
-        self.home_team_winning_percent = prediction_dict.get("api").get("predictions")[0].get("winning_percent").get("home")
-        self.away_team_winning_percent = prediction_dict.get("api").get("predictions")[0].get("winning_percent").get("away")
-        self.draws_team_winning_percent = prediction_dict.get("api").get("predictions")[0].get("winning_percent").get("draws")
-        self.home_team_name = prediction_dict.get("api").get("predictions")[0].get("teams").get("home").get("team_name")
-        self.away_team_name = prediction_dict.get("api").get("predictions")[0].get("teams").get("away").get("team_name")
+        prediction = prediction_dict.get("api").get("predictions")[0]
+        self.advice = prediction.get("advice")
+        self.home_team_winning_percent = prediction.get("winning_percent").get("home")
+        self.away_team_winning_percent = prediction.get("winning_percent").get("away")
+        self.draws_team_winning_percent = prediction.get("winning_percent").get("draws")
+        self.home_team_name = prediction.get("teams").get("home").get("team_name")
+        self.away_team_name = prediction.get("teams").get("away").get("team_name")
 
     def __init(self):
         pass
 
     def __str__(self):
         return \
-f"""{self.home_team_name} - {self.away_team_name} [{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}] Advice: [{self.advice}]"""
+f"{self.home_team_name} - {self.away_team_name} [{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}] Advice: [{self.advice}]"
 
     @staticmethod
     def default_for_no_prediction(team1, team2):
-        return team1 + " " + team2 + " - No predictions"
+        return team1 + " - " + team2 + " - "
+
+    def has_single_winner(self):
+        return "winner" in self.advice.lower()

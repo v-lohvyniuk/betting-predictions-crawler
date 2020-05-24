@@ -20,7 +20,8 @@ class PredictionIntegrationService:
         predictions = []
         for event in events_list:
             prediction = self.get_match_prediction(event)
-            predictions.append(prediction)
+            if type(prediction) is not str:
+                predictions.append(prediction)
 
         return predictions
 
@@ -53,6 +54,7 @@ class PredictionIntegrationService:
             month = date_items[2]
             month_day = date_items[1]
             month_number = ("0" + str(strptime(month, '%b').tm_mon))[-2:]
-        event_date = f"2020-{month_number}-{month_day}"
+
+        event_date = f"{str(datetime.now().year)}-{month_number}-{month_day}"
         return event_date
 

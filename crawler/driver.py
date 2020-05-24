@@ -1,8 +1,8 @@
-from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-
+from fake_useragent import UserAgent
 
 class DriverFactory:
 
@@ -10,9 +10,12 @@ class DriverFactory:
     def create_new_driver():
         ChromeDriverManager().install()
         opts = Options()
-        opts.headless=True
+        ua = UserAgent()
+        agent = ua.random
+        # opts.headless=True
         opts.add_argument('--no-sandbox')
         opts.add_argument('--disable-dev-shm-usage')
+        opts.add_argument(f'user-agent={agent}')
         # dr
         driver = Chrome(options=opts)
         driver.implicitly_wait(30)
@@ -31,6 +34,11 @@ class DriverManager:
         else:
             DriverManager.driver = DriverFactory.create_new_driver()
             return DriverManager.driver
+
+    @staticmethod
+    def actions():
+        actions = ActionChains(DriverManager.get_driver())
+        return actions
 
     @staticmethod
     def finalize_driver():
