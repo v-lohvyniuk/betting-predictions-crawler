@@ -10,7 +10,7 @@ class PariMatchCrawler:
         self.driver = DriverManager.get_driver()
         self.driver.get("https://air2.pm-511.info/en/")
         self.actions = DriverManager.actions()
-
+    
     def get_top_football_events(self):
         football_tab = self.driver.find_element_by_xpath(
             "//*[contains(@class, 'tab__title') and contains(text(), 'Football')]")

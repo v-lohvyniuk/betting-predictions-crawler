@@ -26,8 +26,12 @@ class Prediction:
         pass
 
     def __str__(self):
-        return \
-f"{self.home_team_name} - {self.away_team_name} [{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}] Advice: [{self.advice}]"
+        string = f"{self.home_team_name} - {self.away_team_name}\n" \
+               f"[{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}]\n" \
+               f"Advice: [{self.advice}]"
+        if self.has_single_winner():
+            return "✅✅✅✅✅✅\n" + string + "\n✅✅✅✅✅✅"
+        return string
 
     @staticmethod
     def default_for_no_prediction(team1, team2):

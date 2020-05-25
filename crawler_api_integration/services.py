@@ -10,9 +10,9 @@ from time import strptime
 
 class PredictionIntegrationService:
 
-    def __init__(self, crawler: PariMatchCrawler, apiclient:FootballApiClient):
-        self.crawler = crawler
-        self.apiclient = apiclient
+    def __init__(self):
+        self.crawler = PariMatchCrawler()
+        self.apiclient = FootballApiClient()
         self.fixtures_by_date_cash = {}
 
     def get_matches_predictions(self):
@@ -24,6 +24,11 @@ class PredictionIntegrationService:
                 predictions.append(prediction)
 
         return predictions
+
+    def get_predictions_with_single_winner(self):
+        predictions = self.get_matches_predictions()
+        filtered = list(filter(lambda x: x.has_single_winner(), predictions))
+        return filtered
 
     def get_match_prediction(self, event: MatchRowDTO):
         event_date = PredictionIntegrationService.__format_event_date(event.time_str)

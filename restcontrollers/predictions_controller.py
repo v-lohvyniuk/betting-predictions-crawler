@@ -10,7 +10,7 @@ __name__ = "__main__"
 
 @app.route("/getPredictions")
 def getPredictions():
-    service = PredictionIntegrationService(PariMatchCrawler(), FootballApiClient())
+    service = PredictionIntegrationService()
     predictions = service.get_matches_predictions()
     return jsonpickle.encode(predictions)
 
