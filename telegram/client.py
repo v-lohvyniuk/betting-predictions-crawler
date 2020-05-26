@@ -53,6 +53,8 @@ class TelegramBotService:
                     for prediction in predictions:
                         self.client.send_mess(chat_id, prediction.__str__())
 
+                self.client.send_mess(chat_id, "You're all set !")
+
     def start_in_separate_thread(self):
         thread = threading.Thread(target=TelegramBotService.main, args=[self])
         thread.daemon = True

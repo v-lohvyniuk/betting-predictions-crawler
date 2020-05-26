@@ -30,7 +30,7 @@ class Prediction:
                f"[{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}]\n" \
                f"Advice: [{self.advice}]"
         if self.has_single_winner():
-            return "✅✅✅✅✅✅\n" + string + "\n✅✅✅✅✅✅"
+            return "❗ ❗ ❗ ❗ ❗ ❗ ❗ \n" + string + "\n❗ ❗ ❗ ❗ ❗ ❗ ❗ "
         return string
 
     @staticmethod
