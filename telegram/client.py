@@ -25,7 +25,7 @@ class TelegramClient:
         return response
 
 
-class BotRunner:
+class TelegramBotService:
 
     def __init__(self):
         self.client = TelegramClient()
@@ -35,11 +35,12 @@ class BotRunner:
         while True:
             update = self.client.last_update(self.client.get_updates_json(url))
             if next_update_id == update['update_id']:
+                next_update_id = next_update_id + 1
+
                 message = update['message']['text']
                 chat_id = self.client.get_chat_id(update)
                 if message.lower() in "get":
                     self.client.send_mess(chat_id, "Sending your data ...")
-                    next_update_id = next_update_id + 1
                     prediction_service = PredictionIntegrationService()
                     predictions = prediction_service.get_matches_predictions()
                     for prediction in predictions:
@@ -47,19 +48,13 @@ class BotRunner:
 
                 elif message.lower() in "getwinners":
                     self.client.send_mess(chat_id, "Sending your data ...")
-                    next_update_id = next_update_id + 1
                     prediction_service = PredictionIntegrationService()
                     predictions = prediction_service.get_predictions_with_single_winner()
                     for prediction in predictions:
                         self.client.send_mess(chat_id, prediction.__str__())
 
-                next_update_id = next_update_id + 1
-
     def start_in_separate_thread(self):
-        thread = threading.Thread(target=BotRunner.main, args=[self])
+        thread = threading.Thread(target=TelegramBotService.main, args=[self])
         thread.daemon = True
         thread.start()
 
-
-# bot_runner = BotRunner()
-# bot_runner.start_in_separate_thread()

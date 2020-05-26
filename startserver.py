@@ -4,7 +4,7 @@ import jsonpickle
 from crawler_api_integration.services import PredictionIntegrationService
 from crawler.crawlers import PariMatchCrawler
 from footballapi.client import FootballApiClient
-from telegram.client import BotRunner
+from telegram.client import TelegramBotService
 app = Flask(__name__)
 __name__ = "__main__"
 
@@ -33,6 +33,6 @@ def hello():
 
 
 if __name__ == "__main__":
-    BotRunner().start_in_separate_thread()
+    TelegramBotService().start_in_separate_thread()
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)

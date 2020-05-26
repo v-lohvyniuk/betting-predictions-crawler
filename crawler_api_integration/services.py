@@ -4,6 +4,9 @@ from footballapi.client import FootballApiClient
 from footballapi.models import Prediction
 from footballapi.filters import FixtureFilter
 from datetime import datetime
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 from time import strptime
 
@@ -19,10 +22,12 @@ class PredictionIntegrationService:
         events_list = self.crawler.get_top_football_events()
         predictions = []
         for event in events_list:
-            prediction = self.get_match_prediction(event)
-            if type(prediction) is not str:
-                predictions.append(prediction)
-
+            try:
+                prediction = self.get_match_prediction(event)
+                if type(prediction) is not str:
+                    predictions.append(prediction)
+            except Exception as e:
+                logging.info("Error during fetching predidction for event: {}\n{}".format(event, e))
         return predictions
 
     def get_predictions_with_single_winner(self):
