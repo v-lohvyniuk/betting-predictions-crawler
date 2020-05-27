@@ -39,21 +39,21 @@ class TelegramBotService:
 
                 message = update['message']['text']
                 chat_id = self.client.get_chat_id(update)
-                if message.lower() in "get":
-                    self.client.send_mess(chat_id, "Sending your data ...")
+                if message.lower() in "all":
+                    self.client.send_mess(chat_id, "Yep, processing ...")
                     prediction_service = PredictionIntegrationService()
                     predictions = prediction_service.get_matches_predictions()
                     for prediction in predictions:
                         self.client.send_mess(chat_id, prediction.__str__())
 
-                elif message.lower() in "getwinners":
-                    self.client.send_mess(chat_id, "Sending your data ...")
+                elif message.lower() in "winners":
+                    self.client.send_mess(chat_id, "Yep, processing ...")
                     prediction_service = PredictionIntegrationService()
                     predictions = prediction_service.get_predictions_with_single_winner()
                     for prediction in predictions:
                         self.client.send_mess(chat_id, prediction.__str__())
 
-                self.client.send_mess(chat_id, "You're all set !")
+                self.client.send_mess(chat_id, "You're all set !\nIf I'm not responding start me using going on\n https://pari-match-predictions-crawler.herokuapp.com/")
 
     def start_in_separate_thread(self):
         thread = threading.Thread(target=TelegramBotService.main, args=[self])

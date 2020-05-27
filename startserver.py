@@ -29,7 +29,7 @@ def getPredictionsAsTable():
 
 @app.route("/")
 def hello():
-    return "Hello world"
+    return "<h1> </h2> Application is UP, all services are running"
 
 
 if __name__ == "__main__":
