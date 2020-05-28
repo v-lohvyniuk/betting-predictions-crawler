@@ -47,6 +47,7 @@ class TelegramBotService:
                     result_list = predictions
                     for prediction in predictions:
                         self.client.send_mess(chat_id, prediction.__str__())
+                    self.client.send_mess(chat_id, f"Total results [{len(result_list)}]")
 
                 elif message.lower() in "winners":
                     self.client.send_mess(chat_id, "Yep, processing ...")
@@ -55,8 +56,7 @@ class TelegramBotService:
                     result_list = predictions
                     for prediction in predictions:
                         self.client.send_mess(chat_id, prediction.__str__())
-
-                self.client.send_mess(chat_id, f"Total results [{len(result_list)}]")
+                    self.client.send_mess(chat_id, f"Total results [{len(result_list)}]")
 
     def start_in_separate_thread(self):
         thread = threading.Thread(target=TelegramBotService.main, args=[self])
