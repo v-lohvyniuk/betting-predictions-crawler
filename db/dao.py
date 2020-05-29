@@ -67,7 +67,7 @@ class EventDao:
             flag_modified(event, 'sent_to_user')
             self.session.merge(event)
             self.session.commit()
-        return list(map(lambda x: x.to_prediction, not_sent_events))
+        return list(map(lambda x: x.to_prediction(), not_sent_events))
 
     def put_if_not_present(self, predictions):
         events = self.find_all()
