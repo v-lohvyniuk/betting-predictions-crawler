@@ -17,7 +17,7 @@ class DriverFactory:
         opts.add_argument('--disable-dev-shm-usage')
         opts.add_argument(f'user-agent={agent}')
         # dr
-        driver = Chrome(options=opts)
+        driver = Chrome(ChromeDriverManager().install(), options=opts)
         driver.implicitly_wait(30)
         driver.set_window_size(1120, 550)
         return driver
