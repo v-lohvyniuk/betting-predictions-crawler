@@ -14,16 +14,16 @@ class Prediction:
 
     @staticmethod
     def from_json(prediction_dict):
-        prediction = Prediction()
-        prediction.__prediction_dict = prediction_dict
+        prediction_dto = Prediction()
+        prediction_dto.__prediction_dict = prediction_dict
         prediction = prediction_dict.get("api").get("predictions")[0]
-        prediction.advice = prediction.get("advice")
-        prediction.home_team_winning_percent = prediction.get("winning_percent").get("home")
-        prediction.away_team_winning_percent = prediction.get("winning_percent").get("away")
-        prediction.draws_team_winning_percent = prediction.get("winning_percent").get("draws")
-        prediction.home_team_name = prediction.get("teams").get("home").get("team_name")
-        prediction.away_team_name = prediction.get("teams").get("away").get("team_name")
-        return prediction
+        prediction_dto.advice = prediction.get("advice")
+        prediction_dto.home_team_winning_percent = prediction.get("winning_percent").get("home")
+        prediction_dto.away_team_winning_percent = prediction.get("winning_percent").get("away")
+        prediction_dto.draws_team_winning_percent = prediction.get("winning_percent").get("draws")
+        prediction_dto.home_team_name = prediction.get("teams").get("home").get("team_name")
+        prediction_dto.away_team_name = prediction.get("teams").get("away").get("team_name")
+        return prediction_dto
 
     def __init(self):
         pass
