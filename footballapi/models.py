@@ -12,15 +12,17 @@ class Fixture:
 
 class Prediction:
 
-    def from_json(self, prediction_dict):
-        self.__prediction_dict = prediction_dict
+    def from_json(prediction_dict):
+        prediction = Prediction()
+        prediction.__prediction_dict = prediction_dict
         prediction = prediction_dict.get("api").get("predictions")[0]
-        self.advice = prediction.get("advice")
-        self.home_team_winning_percent = prediction.get("winning_percent").get("home")
-        self.away_team_winning_percent = prediction.get("winning_percent").get("away")
-        self.draws_team_winning_percent = prediction.get("winning_percent").get("draws")
-        self.home_team_name = prediction.get("teams").get("home").get("team_name")
-        self.away_team_name = prediction.get("teams").get("away").get("team_name")
+        prediction.advice = prediction.get("advice")
+        prediction.home_team_winning_percent = prediction.get("winning_percent").get("home")
+        prediction.away_team_winning_percent = prediction.get("winning_percent").get("away")
+        prediction.draws_team_winning_percent = prediction.get("winning_percent").get("draws")
+        prediction.home_team_name = prediction.get("teams").get("home").get("team_name")
+        prediction.away_team_name = prediction.get("teams").get("away").get("team_name")
+        return prediction
 
     def __init(self):
         pass
