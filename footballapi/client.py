@@ -2,7 +2,7 @@ import requests
 import logging
 from footballapi.models import Fixture, Prediction
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 class FootballApiClient:

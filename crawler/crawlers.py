@@ -2,7 +2,7 @@ from crawler.driver import DriverManager
 from crawler.models import MatchRowDTO
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 
 class PariMatchCrawler:

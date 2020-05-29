@@ -34,7 +34,7 @@ def hello():
 if __name__ == "__main__":
     telegram_bot = TelegramBotService()
     telegram_bot.start_in_separate_thread()
-    Scheduler().every_mins(3).execute(PredictionIntegrationService().get_matches_predictions).start()
-    Scheduler().every_mins(5).execute(telegram_bot.send_new_predictions).start()
+    Scheduler().every_mins(5).execute(PredictionIntegrationService().get_matches_predictions).start()
+    Scheduler().every_mins(7).execute(telegram_bot.send_new_predictions).start()
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)

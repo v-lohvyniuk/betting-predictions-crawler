@@ -7,7 +7,7 @@ from datetime import datetime
 from db.dao import EventDao
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 from time import strptime
 
