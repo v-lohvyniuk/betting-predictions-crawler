@@ -34,9 +34,9 @@ class Event(Base):
                      advice=prediction.advice,
                      sent_to_user=False)
 
-    def eq(self, prediction: Prediction):
-        return self.team1 == prediction.home_team_name and \
-               self.team2 == prediction.away_team_name
+    def __eq__(self, other):
+        return self.team1 == other.team1 and \
+               self.team2 == other.team2
 
 
 class EventDao:
