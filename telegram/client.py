@@ -82,6 +82,8 @@ class TelegramBotService:
         chat_id = self.client.get_chat_id(update)
         if self.is_reserved_keyword(message):
             self.respond_to_command(chat_id, message)
+        else:
+            self.send_default_failure_message(chat_id)
 
     def main(self):
         while True:
