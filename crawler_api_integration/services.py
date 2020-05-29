@@ -4,6 +4,7 @@ from footballapi.client import FootballApiClient
 from footballapi.models import Prediction
 from footballapi.filters import FixtureFilter
 from datetime import datetime
+from db.dao import EventDao
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
@@ -28,6 +29,7 @@ class PredictionIntegrationService:
                     predictions.append(prediction)
             except Exception as e:
                 logging.info("Error during fetching predidction for event: {}\n{}".format(event, e))
+        EventDao().put_if_not_present(predictions)
         return predictions
 
     def get_predictions_with_single_winner(self):

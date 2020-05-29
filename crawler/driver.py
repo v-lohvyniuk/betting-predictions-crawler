@@ -45,4 +45,3 @@ class DriverManager:
         if DriverManager.driver:
             DriverManager.driver.quit()
             DriverManager.driver = None
-

@@ -5,3 +5,4 @@ flask
 jsonpickle
 psycopg2
 fake-useragent
+SqlAlchemy
