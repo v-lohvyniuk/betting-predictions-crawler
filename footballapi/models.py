@@ -12,6 +12,7 @@ class Fixture:
 
 class Prediction:
 
+    @staticmethod
     def from_json(prediction_dict):
         prediction = Prediction()
         prediction.__prediction_dict = prediction_dict
