@@ -11,7 +11,7 @@ __name__ = "__main__"
 @app.route("/getPredictions")
 def getPredictions():
     service = PredictionIntegrationService()
-    predictions = service.get_matches_predictions()
+    predictions = service.get_and_persist_predictions()
     return jsonpickle.encode(predictions)
 
 

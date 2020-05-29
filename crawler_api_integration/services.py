@@ -19,7 +19,7 @@ class PredictionIntegrationService:
         self.apiclient = FootballApiClient()
         self.fixtures_by_date_cash = {}
 
-    def get_matches_predictions(self):
+    def get_and_persist_predictions(self):
         events_list = self.crawler.get_top_football_events()
         predictions = []
         for event in events_list:
@@ -33,7 +33,7 @@ class PredictionIntegrationService:
         return predictions
 
     def get_predictions_with_single_winner(self):
-        predictions = self.get_matches_predictions()
+        predictions = self.get_and_persist_predictions()
         filtered = list(filter(lambda x: x.has_single_winner(), predictions))
         return filtered
 

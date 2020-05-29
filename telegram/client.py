@@ -65,7 +65,7 @@ class TelegramBotService:
         prediction_service = PredictionIntegrationService()
         result_list = []
         if command_keyword.lower() in BotKeywords.ALL:
-            result_list = prediction_service.get_matches_predictions()
+            result_list = prediction_service.get_and_persist_predictions()
         elif command_keyword.lower() in [BotKeywords.WINNERS, BotKeywords.WIN]:
             result_list = prediction_service.get_predictions_with_single_winner()
 
