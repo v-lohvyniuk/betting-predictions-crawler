@@ -20,7 +20,7 @@ class TelegramClient:
         return self.last_update(data)
 
     def get_last_update_id(self):
-        return self.last_update(self.get_updates_json(url))['update_id']
+        return self.get_last_update()['update_id']
 
     def get_chat_id(self, update):
         chat_id = update['message']['chat']['id']
