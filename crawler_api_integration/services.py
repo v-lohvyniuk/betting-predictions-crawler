@@ -28,7 +28,7 @@ class PredictionIntegrationService:
                 if type(prediction) is not str:
                     predictions.append(prediction)
             except Exception as e:
-                logging.info("Error during fetching predidction for event: {}\n{}".format(event, e))
+                logging.info("Error during fetching prediction for event: {}\n{}".format(event, e))
         EventDao().put_if_not_present(predictions)
         return predictions
 

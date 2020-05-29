@@ -2,8 +2,7 @@ from flask import Flask, render_template
 import os
 import jsonpickle
 from crawler_api_integration.services import PredictionIntegrationService
-from crawler.crawlers import PariMatchCrawler
-from footballapi.client import FootballApiClient
+from scheduler.scheduler import Scheduler
 from telegram.client import TelegramBotService
 app = Flask(__name__)
 __name__ = "__main__"
@@ -33,6 +32,9 @@ def hello():
 
 
 if __name__ == "__main__":
-    TelegramBotService().start_in_separate_thread()
+    telegram_bot = TelegramBotService()
+    telegram_bot.start_in_separate_thread()
+    Scheduler().every_mins(35).execute(PredictionIntegrationService.get_matches_predictions).start()
+    Scheduler().every_mins(38).execute(telegram_bot.send_new_predictions).start()
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)

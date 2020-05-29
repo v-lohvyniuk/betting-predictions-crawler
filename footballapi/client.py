@@ -31,7 +31,7 @@ class FootballApiClient:
                                     headers=self.headers)
         logging.info("Predictions response: ")
         logging.info(response.json())
-        return Prediction(response.json())
+        return Prediction.from_json(response.json())
 
     def __parse_fixtures_list(self, response):
         result = []

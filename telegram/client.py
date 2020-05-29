@@ -1,5 +1,6 @@
 import requests, threading
 from crawler_api_integration.services import PredictionIntegrationService
+from db.dao import EventDao
 url = "https://api.telegram.org/bot1047441785:AAHsmgHh3gAl0A1k5ljO8qcdN8ixN6iS-SU/"
 
 
@@ -72,6 +73,16 @@ class TelegramBotService:
             self.client.send_mess(chat_id, prediction.__str__())
 
         self.client.send_mess(chat_id, f"Results found: {len(result_list)}")
+
+    def send_new_predictions(self):
+        predictions = EventDao().find_not_published_predictions()
+        chat_id = self.client.get_chat_id(self.client.get_last_update())
+
+        if len(predictions) == 0:
+            self.client.send_mess(chat_id, "No new predictions ! I am working!")
+        else:
+            for prediction in predictions:
+                self.client.send_mess(chat_id, "New prediction !\n" + prediction.__str__())
 
     def send_default_failure_message(self, chat_id):
         self.client.send_mess(chat_id, "Cannot parse your request\n"

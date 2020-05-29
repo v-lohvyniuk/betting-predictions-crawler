@@ -12,7 +12,7 @@ class Fixture:
 
 class Prediction:
 
-    def __init__(self, prediction_dict):
+    def from_json(self, prediction_dict):
         self.__prediction_dict = prediction_dict
         prediction = prediction_dict.get("api").get("predictions")[0]
         self.advice = prediction.get("advice")

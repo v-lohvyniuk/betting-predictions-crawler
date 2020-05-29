@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.declarative import declarative_base
 from footballapi.models import Prediction
 
@@ -34,6 +35,16 @@ class Event(Base):
                      advice=prediction.advice,
                      sent_to_user=False)
 
+    def to_prediction(self):
+        prediction = Prediction()
+        prediction.home_team_name = self.team1
+        prediction.away_team_name = self.team2
+        prediction.home_team_winning_percent = self.first_team_cof
+        prediction.away_team_winning_percent = self.second_team_cof
+        prediction.draws_team_winning_percent = self.draws_cof
+        prediction.advice = self.advice
+        return prediction
+
     def __eq__(self, other):
         return self.team1 == other.team1 and \
                self.team2 == other.team2
@@ -47,6 +58,16 @@ class EventDao:
 
     def find_all(self):
         return self.session.query(Event).all()
+
+    def find_not_published_predictions(self):
+        all = self.find_all()
+        not_sent_events = list(filter(lambda x: not x.sent_to_user, all))
+        for event in not_sent_events:
+            event.sent_to_user = True
+            flag_modified(event, 'sent_to_user')
+            self.session.merge(event)
+            self.session.commit()
+        return list(map(lambda x: x.to_prediction, not_sent_events))
 
     def put_if_not_present(self, predictions):
         events = self.find_all()
