@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.declarative import declarative_base
 from footballapi.models import Prediction
+from crawler.models import MatchRowDTO
 
 Base = declarative_base()
 user="gtvdrkjgsvphfm"
@@ -33,7 +34,8 @@ class Event(Base):
                      second_team_cof=prediction.away_team_winning_percent,
                      draws_cof=prediction.draws_team_winning_percent,
                      advice=prediction.advice,
-                     sent_to_user=False)
+                     sent_to_user=False)\
+
 
     def to_prediction(self):
         prediction = Prediction()
@@ -59,9 +61,21 @@ class EventDao:
     def find_all(self):
         return self.session.query(Event).all()
 
-    def find_not_published_predictions(self):
+    def event_for_teams_present(self, team1, team2):
+        all = self.find_all()
+        for event in all:
+            lowers = [event.team1.lower(), event.team2.lower()]
+            if team1.lower() in lowers and team2.lower() in lowers:
+                return True
+        return False
+
+    def find_events_with_not_sent_flag(self):
         all = self.find_all()
         not_sent_events = list(filter(lambda x: not x.sent_to_user, all))
+        return not_sent_events
+
+    def pop_not_published_predictions(self):
+        not_sent_events = self.find_events_with_not_sent_flag()
         for event in not_sent_events:
             event.sent_to_user = True
             flag_modified(event, 'sent_to_user')

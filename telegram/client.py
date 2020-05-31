@@ -75,7 +75,7 @@ class TelegramBotService:
         self.client.send_mess(chat_id, f"Results found: {len(result_list)}")
 
     def send_new_predictions(self):
-        predictions = EventDao().find_not_published_predictions()
+        predictions = EventDao().pop_not_published_predictions()
         chat_id = self.client.get_chat_id(self.client.get_last_update())
 
         if len(predictions) == 0:

@@ -37,3 +37,10 @@ class PariMatchCrawler:
         logging.info("Selenium PariMatchCrawler finished execution")
         DriverManager.finalize_driver()
         return dto_list
+
+    def try_get_top_football_events(self):
+        try:
+            return self.get_top_football_events()
+        except Exception:
+            logging.error("Can't fetch all top football predictions")
+        return []

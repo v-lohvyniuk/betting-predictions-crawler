@@ -28,14 +28,14 @@ def getPredictionsAsTable():
 
 @app.route("/")
 def hello():
-    return "<h1> </h2> Application is UP, all services are running"
+    return "<h1> Application is UP, all services are running </h1>"
 
 
 if __name__ == "__main__":
-    cron_param = 240
+    cron_param = 120
     telegram_bot = TelegramBotService()
     telegram_bot.start_in_separate_thread()
     Scheduler().every_mins(cron_param).execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_mins(cron_param + 3).execute(telegram_bot.send_new_predictions).start()
+    Scheduler().every_mins(cron_param + 2).execute(telegram_bot.send_new_predictions).start()
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)

@@ -20,9 +20,11 @@ class PredictionIntegrationService:
         self.fixtures_by_date_cash = {}
 
     def get_and_persist_predictions(self):
-        events_list = self.crawler.get_top_football_events()
+        events_list = self.crawler.try_get_top_football_events()
+        event_dao = EventDao()
+        new_events_list = list(filter(lambda x: event_dao.event_for_teams_present(x.team1, x.team2), events_list))
         predictions = []
-        for event in events_list:
+        for event in new_events_list:
             try:
                 prediction = self.get_match_prediction(event)
                 if type(prediction) is not str:
@@ -40,7 +42,7 @@ class PredictionIntegrationService:
     def get_match_prediction(self, event: MatchRowDTO):
         event_date = PredictionIntegrationService.__format_event_date(event.time_str)
 
-        fixtures = self.get_fixtures_from_cash(event_date)
+        fixtures = self.get_fixtures_from_cache(event_date)
         fixtures = FixtureFilter.filter_by_team_names(fixtures, event.team1, event.team2)
         if len(fixtures) == 0:
             return Prediction.default_for_no_prediction(event.team1, event.team2)
@@ -49,7 +51,7 @@ class PredictionIntegrationService:
 
         return prediction
 
-    def get_fixtures_from_cash(self, datetime):
+    def get_fixtures_from_cache(self, datetime):
         if datetime in self.fixtures_by_date_cash:
             return self.fixtures_by_date_cash[datetime]
         fixtures_list = self.apiclient.get_fixtures_by_date(datetime)
