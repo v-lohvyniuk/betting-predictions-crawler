@@ -32,7 +32,6 @@ def hello():
 
 
 if __name__ == "__main__":
-    cron_param = 120
     telegram_bot = TelegramBotService()
     telegram_bot.start_in_separate_thread()
     Scheduler().every_day_at("10:00").execute(PredictionIntegrationService().get_and_persist_predictions).start()

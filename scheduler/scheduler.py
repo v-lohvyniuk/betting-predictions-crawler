@@ -4,12 +4,7 @@ import schedule, time, threading
 class Scheduler:
 
     def __init__(self):
-        self.mins = 1
         self.time = "10:30"
-
-    def every_mins(self, mins):
-        self.mins = mins
-        return self
 
 #   time like 10:30
     def every_day_at(self, time):
@@ -17,7 +12,7 @@ class Scheduler:
         return self
 
     def execute(self, job):
-        schedule.every(self.mins).minutes.do(job)
+        schedule.every().day.at(self.time).do(job)
         return self
 
     def __loop(self):
