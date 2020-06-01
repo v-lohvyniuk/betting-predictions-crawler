@@ -34,14 +34,15 @@ def hello():
 if __name__ == "__main__":
     telegram_bot = TelegramBotService()
     telegram_bot.start_in_separate_thread()
+    delay = 120
     Scheduler()\
         .start_at("10:00").end_at("23:00")\
-        .every_minutes(5)\
+        .every_minutes(delay)\
         .do_action(PredictionIntegrationService().get_predictions_for_new_matches)\
         .schedule()
     Scheduler()\
         .start_at("10:00").end_at("23:00")\
-        .every_minutes(5)\
+        .every_minutes(delay)\
         .delay_from_start(2)\
         .do_action(telegram_bot.send_new_predictions).schedule()
 
