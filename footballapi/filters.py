@@ -23,6 +23,6 @@ class FixtureFilter:
         fixtures_by_first_team = FixtureFilter.filter_by_team_name(fixtures, name1)
         fixtures_by_second_teams = FixtureFilter.filter_by_team_name(fixtures, name2)
 
-        result_list.append(fixtures_by_first_team)
-        result_list.append(fixtures_by_second_teams)
+        result_list.extend(fixtures_by_first_team)
+        result_list.extend(fixtures_by_second_teams)
         return result_list
