@@ -75,7 +75,7 @@ class TelegramBotService:
         for prediction in result_list:
             self.client.send_mess(chat_id, prediction.__str__())
 
-        self.client.send_mess(chat_id, f"Results found: {len(result_list)}")
+        self.client.send_mess(chat_id, f"Query returned {len(result_list)} results")
 
     def send_new_predictions(self):
         predictions = EventDao().pop_not_published_predictions()
