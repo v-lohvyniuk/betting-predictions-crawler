@@ -43,6 +43,7 @@ class Scheduler:
         return self.start_time.tm_hour <= now.hour <= self.end_time.tm_hour
 
     def __run(self):
+        time.sleep(60 * self.delay_from_start_min)
         while True:
             if self.__current_time_matches_range():
                 thread = threading.Thread(target=self.action)
@@ -51,7 +52,6 @@ class Scheduler:
             time.sleep(30*2*self.delay)
                 
     def schedule(self):
-        time.sleep(60 * self.delay_from_start_min)
         thread = threading.Thread(target=self.__run)
         thread.daemon = True
         thread.start()
