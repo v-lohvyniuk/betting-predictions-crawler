@@ -11,7 +11,7 @@ __name__ = "__main__"
 @app.route("/getPredictions")
 def getPredictions():
     service = PredictionIntegrationService()
-    predictions = service.get_and_persist_predictions()
+    predictions = service.get_predictions_for_new_matches()
     response = []
     for prediction in predictions:
         response.append("<p>" + prediction.__str__()  + "</pcookies>")
@@ -21,7 +21,7 @@ def getPredictions():
 @app.route("/getPredictionsAsTable")
 def getPredictionsAsTable():
     service = PredictionIntegrationService()
-    predictions = service.get_and_persist_predictions()
+    predictions = service.get_predictions_for_new_matches()
 
     return render_template("predictions.html", predictions=predictions)
 
@@ -34,17 +34,16 @@ def hello():
 if __name__ == "__main__":
     telegram_bot = TelegramBotService()
     telegram_bot.start_in_separate_thread()
-    Scheduler().every_day_at("10:00").execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_day_at("10:02").execute(telegram_bot.send_new_predictions).start()
-    Scheduler().every_day_at("12:00").execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_day_at("12:02").execute(telegram_bot.send_new_predictions).start()
-    Scheduler().every_day_at("14:30").execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_day_at("14:32").execute(telegram_bot.send_new_predictions).start()
-    Scheduler().every_day_at("17:30").execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_day_at("17:32").execute(telegram_bot.send_new_predictions).start()
-    Scheduler().every_day_at("19:30").execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_day_at("19:32").execute(telegram_bot.send_new_predictions).start()
-    Scheduler().every_day_at("22:00").execute(PredictionIntegrationService().get_and_persist_predictions).start()
-    Scheduler().every_day_at("22:02").execute(telegram_bot.send_new_predictions).start()
+    Scheduler()\
+        .start_at("10:00").end_at("22:00")\
+        .every_minutes(5)\
+        .do_action(PredictionIntegrationService().get_predictions_for_new_matches)\
+        .schedule()
+    Scheduler()\
+        .start_at("10:00").end_at("22:00")\
+        .every_minutes(5)\
+        .delay_from_start(2)\
+        .do_action(telegram_bot.send_new_predictions).schedule()
+
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)

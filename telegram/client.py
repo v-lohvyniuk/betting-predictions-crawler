@@ -39,6 +39,7 @@ class TelegramClient:
 
 class BotKeywords:
     ALL = "all"
+    NEW = "new"
     WIN = "win"
     WINNERS = "winners"
 
@@ -65,7 +66,9 @@ class TelegramBotService:
         prediction_service = PredictionIntegrationService()
         result_list = []
         if command_keyword.lower() in BotKeywords.ALL:
-            result_list = prediction_service.get_and_persist_predictions()
+            result_list = prediction_service.get_predictions_for_all_matches()
+        elif command_keyword.lower() in BotKeywords.NEW:
+            result_list = prediction_service.get_predictions_for_new_matches()
         elif command_keyword.lower() in [BotKeywords.WINNERS, BotKeywords.WIN]:
             result_list = prediction_service.get_predictions_with_single_winner()
 
@@ -79,7 +82,7 @@ class TelegramBotService:
         chat_id = self.client.get_chat_id(self.client.get_last_update())
 
         if len(predictions) == 0:
-            self.client.send_mess(chat_id, "No new predictions ! I am working!")
+            self.client.send_mess(chat_id, "No new predictions, I'm working ...")
         else:
             for prediction in predictions:
                 self.client.send_mess(chat_id, "New prediction !\n" + prediction.__str__())

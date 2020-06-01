@@ -19,7 +19,7 @@ class PredictionIntegrationService:
         self.apiclient = FootballApiClient()
         self.fixtures_by_date_cash = {}
 
-    def get_and_persist_predictions(self):
+    def get_predictions_for_new_matches(self):
         events_list = self.crawler.try_get_top_football_events()
         event_dao = EventDao()
         new_events_list = list(filter(lambda x: event_dao.event_for_teams_present(x.team1, x.team2), events_list))
@@ -34,8 +34,20 @@ class PredictionIntegrationService:
         EventDao().put_if_not_present(predictions)
         return predictions
 
+    def get_predictions_for_all_matches(self):
+        events_list = self.crawler.try_get_top_football_events()
+        predictions = []
+        for event in events_list:
+            try:
+                prediction = self.get_match_prediction(event)
+                if type(prediction) is not str:
+                    predictions.append(prediction)
+            except Exception as e:
+                logging.info("Error during fetching prediction for event: {}\n{}".format(event, e))
+        return predictions
+
     def get_predictions_with_single_winner(self):
-        predictions = self.get_and_persist_predictions()
+        predictions = self.get_predictions_for_all_matches()
         filtered = list(filter(lambda x: x.has_single_winner(), predictions))
         return filtered
 
