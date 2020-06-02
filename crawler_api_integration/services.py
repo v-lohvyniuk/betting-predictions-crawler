@@ -22,7 +22,7 @@ class PredictionIntegrationService:
     def get_predictions_for_new_matches(self):
         events_list = self.crawler.try_get_top_football_events()
         event_dao = EventDao()
-        new_events_list = list(filter(lambda x: event_dao.event_for_teams_present(x.team1, x.team2), events_list))
+        new_events_list = list(filter(lambda x: not event_dao.event_for_teams_present(x.team1, x.team2), events_list))
         predictions = []
         for event in new_events_list:
             try:
@@ -34,7 +34,7 @@ class PredictionIntegrationService:
         EventDao().put_if_not_present(predictions)
         return predictions
 
-    def get_predictions_for_all_matches(self):
+    def  get_predictions_for_all_matches(self):
         events_list = self.crawler.try_get_top_football_events()
         predictions = []
         for event in events_list:
