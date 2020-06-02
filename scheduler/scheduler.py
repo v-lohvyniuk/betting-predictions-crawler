@@ -18,6 +18,7 @@ class Scheduler:
 
     def with_timezone(self, timezone):
         self.timezone = timezone
+        return self
 
     # time in format like "10:30"
     def start_at(self, time_str):
