@@ -36,13 +36,15 @@ if __name__ == "__main__":
     telegram_bot.start_in_separate_thread()
     delay = 120
     Scheduler()\
+        .with_timezone(3)\
         .start_at("10:00").end_at("23:00")\
-        .every_minutes(delay)\
+        .every_hours(2)\
         .do_action(PredictionIntegrationService().get_predictions_for_new_matches)\
         .schedule()
     Scheduler()\
+        .with_timezone(3)\
         .start_at("10:00").end_at("23:00")\
-        .every_minutes(delay)\
+        .every_hours(2)\
         .delay_from_start(2)\
         .do_action(telegram_bot.send_new_predictions).schedule()
 

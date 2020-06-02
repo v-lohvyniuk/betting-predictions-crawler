@@ -16,6 +16,9 @@ class Scheduler:
         self.action = action
         return self
 
+    def with_timezone(self, timezone):
+        self.timezone = timezone
+
     # time in format like "10:30"
     def start_at(self, time_str):
         self.start_time = time.strptime(time_str, "%H:%M")
@@ -40,7 +43,7 @@ class Scheduler:
 
     def __current_time_matches_range(self):
         now = datetime.now().time()
-        return self.start_time.tm_hour <= now.hour <= self.end_time.tm_hour
+        return self.start_time.tm_hour - self.timezone <= now.hour <= self.end_time.tm_hour - self.timezone
 
     def __run(self):
         time.sleep(60 * self.delay_from_start_min)
