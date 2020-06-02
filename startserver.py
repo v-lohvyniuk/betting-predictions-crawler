@@ -40,11 +40,11 @@ if __name__ == "__main__":
         .every_minutes(delay)\
         .do_action(PredictionIntegrationService().get_predictions_for_new_matches)\
         .schedule()
-    # Scheduler()\
-    #     .start_at("10:00").end_at("23:00")\
-    #     .every_minutes(delay)\
-    #     .delay_from_start(2)\
-    #     .do_action(telegram_bot.send_new_predictions).schedule()
+    Scheduler()\
+        .start_at("10:00").end_at("23:00")\
+        .every_minutes(delay)\
+        .delay_from_start(2)\
+        .do_action(telegram_bot.send_new_predictions).schedule()
 
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)
