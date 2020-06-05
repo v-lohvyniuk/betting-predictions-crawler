@@ -39,7 +39,7 @@ if __name__ == "__main__":
         .with_timezone(3)\
         .start_at("10:00").end_at("23:00")\
         .every_hours(2)\
-        .do_action(PredictionIntegrationService().get_predictions_for_new_matches)\
+        .do_action(PredictionIntegrationService().get_predictions_for_new_matches_with_single_winner)\
         .schedule()
     Scheduler()\
         .with_timezone(3)\

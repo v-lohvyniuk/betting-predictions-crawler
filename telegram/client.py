@@ -72,20 +72,25 @@ class TelegramBotService:
         elif command_keyword.lower() in [BotKeywords.WINNERS, BotKeywords.WIN]:
             result_list = prediction_service.get_predictions_with_single_winner()
 
-        for prediction in result_list:
-            self.client.send_mess(chat_id, prediction.__str__())
-
-        self.client.send_mess(chat_id, f"Query returned {len(result_list)} results")
+        message = TelegramBotService.format_predictions_result_message(result_list)
+        self.client.send_mess(chat_id, message)
 
     def send_new_predictions(self):
         predictions = EventDao().pop_not_published_predictions()
         chat_id = self.client.get_chat_id(self.client.get_last_update())
 
         if len(predictions) == 0:
-            self.client.send_mess(chat_id, "No new predictions, I'm working ...")
+            self.client.send_mess(chat_id, "No new predictions for this period")
         else:
-            for prediction in predictions:
-                self.client.send_mess(chat_id, "New prediction !\n" + prediction.__str__())
+            message = TelegramBotService.format_predictions_result_message(predictions)
+            self.client.send_mess(chat_id, message)
+
+    @staticmethod
+    def format_predictions_result_message(predictions):
+        message = f"Predictions: {str(len(predictions))}\n"
+        for prediction in predictions:
+            message += prediction.__str__() + "\n"
+        return message
 
     def send_default_failure_message(self, chat_id):
         self.client.send_mess(chat_id, "Cannot parse your request\n"

@@ -34,6 +34,11 @@ class PredictionIntegrationService:
         EventDao().put_if_not_present(predictions)
         return predictions
 
+    def get_predictions_for_new_matches_with_single_winner(self):
+        all_new = self.get_predictions_for_new_matches()
+        winners_only = list(filter(lambda x: x.has_single_winner(), all_new))
+        return winners_only
+
     def  get_predictions_for_all_matches(self):
         events_list = self.crawler.try_get_top_football_events()
         predictions = []
