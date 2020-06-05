@@ -29,9 +29,9 @@ class Prediction:
         pass
 
     def __str__(self):
-        string = f"{self.home_team_name} [{self.home_team_winning_percent}] - [{self.away_team_winning_percent}] {self.away_team_name}\n" \
+        string = f"{self.home_team_name} - {self.away_team_name}\n" \
+               f"[{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}]\n" \
                f"Advice: [{self.advice}]"
-               # f"[{self.home_team_winning_percent}] [{self.draws_team_winning_percent}] [{self.away_team_winning_percent}]\n" \
         if self.has_single_winner():
             return string + "\n🏆 🏆 🏆 🏆 🏆 🏆 🏆 "
         return string

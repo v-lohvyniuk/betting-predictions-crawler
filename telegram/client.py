@@ -90,7 +90,7 @@ class TelegramBotService:
         message = f"Predictions: {str(len(predictions))}\n"
         for prediction in predictions:
             message += prediction.__str__()
-            message += "\n----------------\n"
+            message += "\n-------------------------------------------\n"
         return message
 
     def send_default_failure_message(self, chat_id):
