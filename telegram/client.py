@@ -86,6 +86,16 @@ class TelegramBotService:
             self.client.send_mess(chat_id, message)
 
     def send_new_predictions_wihth_single_winenr(self):
+        try:
+            self.try_send_new_predictions_with_single_winner()
+        except Exception as e:
+            try:
+                self.try_send_new_predictions_with_single_winner()
+            except Exception as e2:
+                chat_id = self.client.get_chat_id(self.client.get_last_update())
+                self.client.send_mess(chat_id, "Something wrong with your client, e: {}".format(e2))
+
+    def try_send_new_predictions_with_single_winner(self):
         predictions = EventDao().pop_not_published_predictions_with_single_winner()
         chat_id = self.client.get_chat_id(self.client.get_last_update())
 
@@ -94,6 +104,7 @@ class TelegramBotService:
         else:
             message = TelegramBotService.format_predictions_result_message(predictions)
             self.client.send_mess(chat_id, message)
+
 
     @staticmethod
     def format_predictions_result_message(predictions):
