@@ -83,6 +83,16 @@ class EventDao:
             self.session.commit()
         return list(map(lambda x: x.to_prediction(), not_sent_events))
 
+    def pop_not_published_predictions_with_single_winner(self):
+        not_sent_events = self.find_events_with_not_sent_flag()
+        not_send_events_with_single_winner = list(filter(lambda x: x.to_prediction().has_single_winner(), not_sent_events))
+        for event in not_send_events_with_single_winner:
+            event.sent_to_user = True
+            flag_modified(event, 'sent_to_user')
+            self.session.merge(event)
+            self.session.commit()
+        return list(map(lambda x: x.to_prediction(), not_send_events_with_single_winner))
+
     def put_if_not_present(self, predictions):
         events = self.find_all()
         for prediction in predictions:

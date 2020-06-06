@@ -85,6 +85,16 @@ class TelegramBotService:
             message = TelegramBotService.format_predictions_result_message(predictions)
             self.client.send_mess(chat_id, message)
 
+    def send_new_predictions_wihth_single_winenr(self):
+        predictions = EventDao().pop_not_published_predictions_with_single_winner()
+        chat_id = self.client.get_chat_id(self.client.get_last_update())
+
+        if len(predictions) == 0:
+            self.client.send_mess(chat_id, "No new predictions for this period")
+        else:
+            message = TelegramBotService.format_predictions_result_message(predictions)
+            self.client.send_mess(chat_id, message)
+
     @staticmethod
     def format_predictions_result_message(predictions):
         message = f"Predictions: {str(len(predictions))}\n"
