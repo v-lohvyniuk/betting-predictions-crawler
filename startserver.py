@@ -46,7 +46,7 @@ if __name__ == "__main__":
         .start_at("10:00").end_at("23:00")\
         .every_hours(2)\
         .delay_from_start(2)\
-        .do_action(telegram_bot.send_new_predictions).schedule()
+        .do_action(telegram_bot.send_new_predictions_wihth_single_winenr()).schedule()
 
     port = int(os.environ.get("PORT", 5201))
     app.run(host='0.0.0.0', port=port)
