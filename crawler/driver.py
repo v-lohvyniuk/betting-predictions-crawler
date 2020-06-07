@@ -54,5 +54,6 @@ class DriverManager:
 
 
 driver = DriverManager.get_driver()
+driver.get("https://air2.parimatch.com/en/")
 time.sleep(10)
 DriverManager.finalize_driver()

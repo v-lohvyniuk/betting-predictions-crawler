@@ -1,37 +1,37 @@
-[14604:14651:0608/024430.533482:INFO:login_database.cc(1305)] Password decryption failed, encryption_result is 2
-[14604:14646:0608/024430.534276:ERROR:token_service_table.cc(140)] Failed to decrypt token for service AccountId-103149604182709205526
-[14664:14791:0608/024436.247064:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 104 to 127
-[14664:14791:0608/024436.247149:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 106 to 125
-[14664:14791:0608/024436.247187:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 110 to 124
-[14664:14791:0608/024436.247216:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 112 to 123
-[14664:14791:0608/024436.247258:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 103 to 122
-[14664:14791:0608/024436.247296:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 105 to 121
-[14664:14791:0608/024436.247340:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 111 to 120
-[14664:14791:0608/024436.247372:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 109 to 119
-[14664:14791:0608/024436.247409:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 1 to 14
-[14664:14791:0608/024436.247450:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 3 to 13
-[14664:14791:0608/024436.247539:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 5 to 12
-[14664:14791:0608/024436.247573:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 6 to 11
-[14604:14604:0608/024436.293456:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://doubleclick.net/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
-[14604:14652:0608/024436.739993:INFO:login_database.cc(1305)] Password decryption failed, encryption_result is 2
-[14604:14604:0608/024436.801663:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://facebook.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
-[14604:14604:0608/024436.839958:INFO:CONSOLE(52522)] "Is EQUAL: true", source: https://air2.parimatch.com/js/main.js?1.72.2 (52522)
-[14604:14604:0608/024436.840035:INFO:CONSOLE(52523)] "betgames-roulette rendered", source: https://air2.parimatch.com/js/main.js?1.72.2 (52523)
-[14604:14604:0608/024436.841447:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.841529:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.841827:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.841913:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.842073:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.842254:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.842419:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024436.842589:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
-[14604:14604:0608/024437.435191:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at http://hit.gemius.pl/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
-[14604:14604:0608/024437.771947:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://live.wirebankers.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
-[14604:14604:0608/024437.836403:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at http://live.wirebankers.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
-[14604:14604:0608/024437.926550:INFO:CONSOLE(2)] "%c📁 Application switch from empty to tableId=vctlz20yfnmp1ylr, vtId=mtiwml23xceqjt6o font-size: 120%;", source: https://live.wirebankers.com/mobile/ (2)
-[14604:14604:0608/024437.932941:INFO:CONSOLE(2)] "console.groupEnd", source: https://live.wirebankers.com/mobile/ (2)
-[14869:14869:0608/024438.478871:WARNING:audio_manager_linux.cc(58)] Falling back to ALSA for audio output. PulseAudio is not available or could not be initialized.
-[14604:14604:0608/024438.485959:INFO:CONSOLE(2)] "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu", source: https://static.egcdn.com/mobile/js/vendor.6a0c1.js (2)
-[14604:14604:0608/024439.523905:INFO:CONSOLE(6)] "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu", source: https://static.egcdn.com/mobile-video/video_desktop_v8.js? (6)
-[14604:14604:0608/024439.525026:INFO:CONSOLE(6)] "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu", source: https://static.egcdn.com/mobile-video/video_desktop_v8.js? (6)
-[14604:14604:0608/024439.908787:INFO:CONSOLE(8)] "02:44:39.908 [IOController] > Sync duration 0 at init 1000, at playback 1000", source: blob:https://live.wirebankers.com/f8587054-6ef2-4763-ab02-9045aba4a026 (8)
+[16076:16109:0608/025148.465194:ERROR:token_service_table.cc(140)] Failed to decrypt token for service AccountId-103149604182709205526
+[16076:16114:0608/025148.475157:INFO:login_database.cc(1305)] Password decryption failed, encryption_result is 2
+[16132:16235:0608/025150.448417:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 104 to 127
+[16132:16235:0608/025150.448493:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 106 to 125
+[16132:16235:0608/025150.448525:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 110 to 124
+[16132:16235:0608/025150.448584:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 112 to 123
+[16132:16235:0608/025150.448621:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 103 to 122
+[16132:16235:0608/025150.448650:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 105 to 121
+[16132:16235:0608/025150.448684:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 111 to 120
+[16132:16235:0608/025150.448709:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 109 to 119
+[16132:16235:0608/025150.448739:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 1 to 14
+[16132:16235:0608/025150.448763:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 3 to 13
+[16132:16235:0608/025150.448787:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 5 to 12
+[16132:16235:0608/025150.448811:WARNING:used_ids.h(55)] Duplicate id found. Reassigning from 6 to 11
+[16076:16076:0608/025150.950052:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://facebook.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
+[16076:16101:0608/025150.951603:INFO:login_database.cc(1305)] Password decryption failed, encryption_result is 2
+[16076:16076:0608/025150.977805:INFO:CONSOLE(52522)] "Is EQUAL: true", source: https://air2.parimatch.com/js/main.js?1.72.2 (52522)
+[16076:16076:0608/025150.977870:INFO:CONSOLE(52523)] "betgames-roulette rendered", source: https://air2.parimatch.com/js/main.js?1.72.2 (52523)
+[16076:16076:0608/025150.979433:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.979661:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.979845:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.980051:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.980229:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.980435:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.980632:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025150.980837:INFO:CONSOLE(52398)] "TO BE PIBLISHED [object Object]", source: https://air2.parimatch.com/js/main.js?1.72.2 (52398)
+[16076:16076:0608/025151.330292:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at http://hit.gemius.pl/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
+[16076:16076:0608/025151.644422:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://live.wirebankers.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
+[16076:16076:0608/025151.657530:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at http://live.wirebankers.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://air2.parimatch.com/en/ (0)
+[16076:16076:0608/025151.671420:INFO:CONSOLE(2)] "%c📁 Application switch from empty to tableId=vctlz20yfnmp1ylr, vtId=mtiwml23xceqjt6o font-size: 120%;", source: https://live.wirebankers.com/mobile/ (2)
+[16076:16076:0608/025151.677553:INFO:CONSOLE(2)] "console.groupEnd", source: https://live.wirebankers.com/mobile/ (2)
+[16338:16338:0608/025152.147775:WARNING:audio_manager_linux.cc(58)] Falling back to ALSA for audio output. PulseAudio is not available or could not be initialized.
+[16076:16076:0608/025152.174293:INFO:CONSOLE(2)] "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu", source: https://static.egcdn.com/mobile/js/vendor.6a0c1.js (2)
+[16076:16076:0608/025152.500089:INFO:CONSOLE(6)] "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu", source: https://static.egcdn.com/mobile-video/video_desktop_v8.js? (6)
+[16076:16076:0608/025152.501172:INFO:CONSOLE(6)] "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu", source: https://static.egcdn.com/mobile-video/video_desktop_v8.js? (6)
+[16076:16076:0608/025152.933027:INFO:CONSOLE(8)] "02:51:52.932 [IOController] > Sync duration 0 at init 1000, at playback 1000", source: blob:https://live.wirebankers.com/9c6ad792-8ee8-4d88-9494-693faa14ba3d (8)
+[16076:16076:0608/025204.435354:WARNING:pref_notifier_impl.cc(40)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
