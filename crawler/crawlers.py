@@ -1,11 +1,17 @@
 from crawler.driver import DriverManager
 from crawler.models import MatchRowDTO
 import logging
-
+import time
 logging.basicConfig(level=logging.INFO)
 
 
 class PariMatchCrawler:
+
+    def is_logged_in(self):
+        self.driver = DriverManager.get_driver()
+        self.driver.get("https://air2.parimatch.com/en/")
+        time.sleep(5)
+        return "BALANCE" in self.driver.page_source
 
     def get_top_football_events(self):
         self.driver = DriverManager.get_driver()

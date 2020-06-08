@@ -4,6 +4,7 @@ import jsonpickle
 from crawler_api_integration.services import PredictionIntegrationService
 from scheduler.scheduler import Scheduler
 from telegram.client import TelegramBotService
+from crawler.crawlers import PariMatchCrawler
 app = Flask(__name__)
 __name__ = "__main__"
 
@@ -16,6 +17,11 @@ def getPredictions():
     for prediction in predictions:
         response.append("<p>" + prediction.__str__()  + "</pcookies>")
     return jsonpickle.encode(response)
+
+
+@app.route("/login")
+def getLogin():
+    return str(PariMatchCrawler().is_logged_in())
 
 
 @app.route("/getPredictionsAsTable")

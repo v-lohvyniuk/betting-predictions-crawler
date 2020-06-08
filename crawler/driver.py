@@ -12,8 +12,6 @@ class DriverFactory:
     def create_new_driver():
         ChromeDriverManager().install()
         opts = Options()
-        ua = UserAgent()
-        agent = ua.random
         # opts.headless=True
         USER_PROFILE_DIR = os.path.dirname(os.path.abspath(__file__)) + os.sep + "chrome_profile/google-chrome"
         USER_PROFILE_DIR = USER_PROFILE_DIR.replace("\\", "/")
@@ -21,7 +19,6 @@ class DriverFactory:
         opts.add_argument('--user-data-dir={}'.format(USER_PROFILE_DIR))
         opts.add_argument('--no-sandbox')
         opts.add_argument('--disable-dev-shm-usage')
-        opts.add_argument(f'user-agent={agent}')
         # dr
         driver = Chrome(ChromeDriverManager().install(), options=opts)
         driver.implicitly_wait(30)
@@ -51,9 +48,3 @@ class DriverManager:
         if DriverManager.driver:
             DriverManager.driver.quit()
             DriverManager.driver = None
-
-
-driver = DriverManager.get_driver()
-driver.get("https://air2.parimatch.com/en/")
-time.sleep(10)
-DriverManager.finalize_driver()
