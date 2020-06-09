@@ -3,19 +3,21 @@ import db.queries as queries
 import logging
 
 logging.basicConfig(level=logging.INFO)
-user="gtvdrkjgsvphfm"
-password="14eb59e2296723ea6865c1cd6abf1c8acad0f3f92fe99674d42cc62961116f85"
-host="ec2-54-246-90-10.eu-west-1.compute.amazonaws.com"
-port="5432"
-database="dbhribebhu9rel"
+
+class DbConsts:
+    user="ndsqqccomgcjru"
+    password="7731f0b85d92b20adabadde4bfdcf2f2527534119324422e631bd5ef4f5dabdf"
+    host="ec2-46-137-84-140.eu-west-1.compute.amazonaws.com"
+    port="5432"
+    database="d6acmb8v2cqk01"
 
 class DbClient:
     def connect(self):
-        self.connection = psycopg2.connect(user="gtvdrkjgsvphfm",
-                                           password="14eb59e2296723ea6865c1cd6abf1c8acad0f3f92fe99674d42cc62961116f85",
-                                           host="ec2-54-246-90-10.eu-west-1.compute.amazonaws.com",
-                                           port="5432",
-                                           database="dbhribebhu9rel")
+        self.connection = psycopg2.connect(user=DbConsts.user,
+                                           password=DbConsts.password,
+                                           host=DbConsts.host,
+                                           port=DbConsts.port,
+                                           database=DbConsts.database)
         logging.info("Initialized the connection to db")
         return self.connection
 
