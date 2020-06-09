@@ -12,7 +12,7 @@ class DriverFactory:
         opts = Options()
         ua = UserAgent()
         agent = ua.random
-        opts.headless=True
+        # opts.headless=True
         opts.add_argument('--no-sandbox')
         opts.add_argument('--disable-dev-shm-usage')
         opts.add_argument(f'user-agent={agent}')

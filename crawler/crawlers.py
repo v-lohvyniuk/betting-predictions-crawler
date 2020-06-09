@@ -28,7 +28,7 @@ class PariMatchCrawler:
             team_1 = team_elements[0].text
             team_2 = team_elements[1].text
             coeffs_els = row.find_elements_by_xpath(
-                "(//*[@class='main-markets-group '])[1]//*[@class='outcome__coeff ']")
+                "(.//*[@class='main-markets-group '])[1]//*[@class='outcome__coeff ']")
             team_1_win_coeff = coeffs_els[0].text
             noone_coeff = coeffs_els[1].text
             team_2_win_coeff = coeffs_els[2].text
@@ -44,3 +44,15 @@ class PariMatchCrawler:
         except Exception:
             logging.error("Can't fetch all top football predictions")
         return []
+
+
+    def get_top_football_events_with_small_coeff(self):
+        top_events = self.try_get_top_football_events()
+        events_with_coeff = list(filter(lambda x: '-' not in x.team1_win_coeff, top_events))
+        return list(filter(lambda x: PariMatchCrawler.__coeff_differs_7_times(x.team1_win_coeff, x.team2_win_coeff), events_with_coeff))
+
+    @staticmethod
+    def __coeff_differs_7_times(coeff1, coeff2):
+        multiplicator = 9
+        return float(coeff1) / float(coeff2) >= multiplicator\
+               or float(coeff2) / float(coeff1) >= multiplicator

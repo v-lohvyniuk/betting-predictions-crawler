@@ -42,10 +42,11 @@ class BotKeywords:
     NEW = "new"
     WIN = "win"
     WINNERS = "winners"
+    SMALL_COEFF = "small"
 
     @staticmethod
     def as_list():
-        return [BotKeywords.ALL, BotKeywords.WIN, BotKeywords.WINNERS]
+        return [BotKeywords.ALL, BotKeywords.WIN, BotKeywords.WINNERS, BotKeywords.SMALL_COEFF]
 
 
 class TelegramBotService:
@@ -71,8 +72,10 @@ class TelegramBotService:
             result_list = prediction_service.get_predictions_for_new_matches()
         elif command_keyword.lower() in [BotKeywords.WINNERS, BotKeywords.WIN]:
             result_list = prediction_service.get_predictions_with_single_winner()
+        elif command_keyword.lower() in [BotKeywords.SMALL_COEFF]:
+            result_list = prediction_service.crawler.get_top_football_events_with_small_coeff()
 
-        message = TelegramBotService.format_predictions_result_message(result_list)
+        message = TelegramBotService.format_result_list_message(result_list)
         self.client.send_mess(chat_id, message)
 
     def send_new_predictions(self):
@@ -82,7 +85,7 @@ class TelegramBotService:
         if len(predictions) == 0:
             self.client.send_mess(chat_id, "No new predictions for this period")
         else:
-            message = TelegramBotService.format_predictions_result_message(predictions)
+            message = TelegramBotService.format_result_list_message(predictions)
             self.client.send_mess(chat_id, message)
 
     def send_new_predictions_wihth_single_winenr(self):
@@ -102,13 +105,13 @@ class TelegramBotService:
         if len(predictions) == 0:
             self.client.send_mess(chat_id, "No new predictions for this period")
         else:
-            message = TelegramBotService.format_predictions_result_message(predictions)
+            message = TelegramBotService.format_result_list_message(predictions)
             self.client.send_mess(chat_id, message)
 
 
     @staticmethod
-    def format_predictions_result_message(predictions):
-        message = f"Predictions: {str(len(predictions))}\n"
+    def format_result_list_message(predictions):
+        message = f"Results: {str(len(predictions))}\n"
         for prediction in predictions:
             message += prediction.__str__()
             message += "\n-------------------------------------------\n"
