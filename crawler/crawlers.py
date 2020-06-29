@@ -1,17 +1,44 @@
 from crawler.driver import DriverManager
 from crawler.models import MatchRowDTO
 import logging
-import time
+import datetime
 logging.basicConfig(level=logging.INFO)
+import calendar
+import time
 
 
 class PariMatchCrawler:
 
-    def is_logged_in(self):
+    def __init__(self):
         self.driver = DriverManager.get_driver()
+
+    def is_logged_in(self):
+        return "BALANCE" in self.driver.page_source
+
+    def __populate_cookies(self):
+        cookies = self.driver.get_cookies()
+        self.driver.delete_all_cookies()
+        self.driver.refresh()
+        for cookie in cookies:
+            if 'expiry' in cookie.keys():
+                future = datetime.datetime.utcnow() + datetime.timedelta(days=700)
+                cookie['expiry'] = calendar.timegm(future.timetuple())
+            self.driver.add_cookie(cookie)
+        self.driver.refresh()
+
+    def open_home_page(self):
         self.driver.get("https://air2.parimatch.com/en/")
         time.sleep(5)
-        return "BALANCE" in self.driver.page_source
+        # self.__populate_cookies()
+
+    def login_if_needed(self):
+        try:
+            self.driver.find_element_by_xpath("//*[contains(@class, 'btn-login')]").click()
+            self.driver.find_element_by_id("login").send_keys("volodymyr.lohvyniuk@gmail.com")
+            self.driver.find_element_by_id("password").send_keys("Vovazjambo18")
+            time.sleep(5)
+        except Exception as e:
+            logging.error(f"Exception was happen: {e}")
 
     def get_top_football_events(self):
         self.driver = DriverManager.get_driver()
@@ -50,3 +77,9 @@ class PariMatchCrawler:
         except Exception:
             logging.error("Can't fetch all top football predictions")
         return []
+
+
+bot = PariMatchCrawler()
+bot.open_home_page()
+bot.login_if_needed()
+bot.is_logged_in()

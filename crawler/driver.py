@@ -48,3 +48,8 @@ class DriverManager:
         if DriverManager.driver:
             DriverManager.driver.quit()
             DriverManager.driver = None
+
+
+driver = DriverManager.get_driver()
+driver.get("https://google.com")
+pass
